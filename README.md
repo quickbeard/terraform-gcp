@@ -1,2 +1,2 @@
-# gcp-terraform
+# Instructions
 Terraform codes for GCP
