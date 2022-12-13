@@ -1,9 +1,7 @@
-/*
 resource "google_service_account" "default" {
   account_id = "service-account-id"
   display_name = "Service Account"
 }
-*/
 
 # Create a cluster
 resource "google_container_cluster" "my_cluster" {
