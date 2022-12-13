@@ -26,15 +26,33 @@ resource "google_container_node_pool" "my_node_pool" {
     preemptible = true
     machine_type = var.machine_type
 
+    /*
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
     service_account = google_service_account.default.email
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
+    */
   }
 }
 
+# Define the container image for the app
+resource "google_container_image" "my_image" {
+  name = "gcr.io/minh-sandbox/web-app-container"
+}
+
 # Deploy an app
+resource "google_container_deployment" "my_deployment" {
+  name = "demo-web-app"
+  cluster = google_container_cluster.my_cluster.name
+  image {
+    name = google_container_image.my_image.name
+    # tag = "latest"
+  }
+}
+
+
+/*
 resource "kubernetes_deployment" "k8s_deployment" {
   metadata {
     name = "my-deployment"
@@ -65,3 +83,4 @@ resource "kubernetes_deployment" "k8s_deployment" {
     }
   }
 }
+*/
