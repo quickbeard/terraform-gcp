@@ -1,2 +1,2 @@
 # Instructions
-Terraform codes for GCP
+Terraform codes for GKE
