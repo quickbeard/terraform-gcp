@@ -1,9 +1,11 @@
+/*
 resource "google_service_account" "default" {
   account_id = "service-account-id"
   display_name = "Service Account"
 }
+*/
 
-resource "google_container_cluster" "primary" {
+resource "google_container_cluster" "my_cluster" {
   name = var.cluster
   location = var.region_east
 
@@ -14,10 +16,10 @@ resource "google_container_cluster" "primary" {
   initial_node_count = 1
 }
 
-resource "google_container_node_pool" "primary_preemptible_nodes" {
+resource "google_container_node_pool" "my_node_pool" {
   name = var.node_pool
   location = var.region_east
-  cluster = google_container_cluster.primary.name
+  cluster = google_container_cluster.my_cluster.name
   node_count = 1
 
   node_config {
