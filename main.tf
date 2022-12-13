@@ -5,6 +5,7 @@ resource "google_service_account" "default" {
 }
 */
 
+# Create a cluster
 resource "google_container_cluster" "my_cluster" {
   name = var.cluster
   location = var.region_east
@@ -16,6 +17,7 @@ resource "google_container_cluster" "my_cluster" {
   initial_node_count = 1
 }
 
+# Create a node pool
 resource "google_container_node_pool" "my_node_pool" {
   name = var.node_pool
   location = var.region_east
@@ -34,6 +36,7 @@ resource "google_container_node_pool" "my_node_pool" {
   }
 }
 
+# Deploy an app
 resource "kubernetes_deployment" "k8s_deployment" {
   metadata {
     name = "demo-web-app"
@@ -45,7 +48,7 @@ resource "kubernetes_deployment" "k8s_deployment" {
       image = "gcr.io/minh-sandbox/web-app-container"
     }
 
-    # Expose the app on port 8080
+    # Expose the app
     container {
       name  = "demo-web-app"
       port {
