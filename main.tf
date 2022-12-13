@@ -37,13 +37,31 @@ resource "google_container_node_pool" "my_node_pool" {
 # Deploy an app
 resource "kubernetes_deployment" "k8s_deployment" {
   metadata {
-    name = "demo-web-app"
+    name = "my-deployment"
   }
 
   spec {
-    # Use the Google Container Registry to pull the image
-    container {
-      image = "gcr.io/minh-sandbox/web-app-container"
+    replicas = 1
+
+    selector {
+      match_labels = {
+        app = "demo-web-app"
+      }
+    }
+
+    template {
+      metadata {
+        labels = {
+          app = "demo-web-app"
+        }
+      }
+
+      spec {
+        container {
+          image = "gcr.io/minh-sandbox/web-app-container"
+          name  = "demo-web-app"
+        }
+      }
     }
   }
 }
