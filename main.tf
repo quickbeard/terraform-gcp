@@ -42,7 +42,7 @@ resource "kubernetes_deployment" "k8s_deployment" {
 
   spec {
     replicas = 1
-    
+
     selector {
       match_labels = {
         app = "demo-web-app"
