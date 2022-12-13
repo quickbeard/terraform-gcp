@@ -33,3 +33,24 @@ resource "google_container_node_pool" "my_node_pool" {
     ]
   }
 }
+
+resource "kubernetes_deployment" "k8s_deployment" {
+  metadata {
+    name = "demo-web-app"
+  }
+
+  spec {
+    # Use the Google Container Registry to pull the image
+    container {
+      image = "gcr.io/minh-sandbox/web-app-container"
+    }
+
+    # Expose the app on port 8080
+    container {
+      name  = "demo-web-app"
+      port {
+        container_port = 80
+      }
+    }
+  }
+}
