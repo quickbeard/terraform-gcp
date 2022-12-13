@@ -45,13 +45,5 @@ resource "kubernetes_deployment" "k8s_deployment" {
     container {
       image = "gcr.io/minh-sandbox/web-app-container"
     }
-
-    # Expose the app
-    container {
-      name  = "demo-web-app"
-      port {
-        container_port = 80
-      }
-    }
   }
 }
