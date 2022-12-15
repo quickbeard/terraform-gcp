@@ -6,7 +6,7 @@ resource "google_service_account" "default" {
 # Create a cluster
 resource "google_container_cluster" "my_cluster" {
   name = var.cluster
-  location = var.region_east
+  location = var.zone_east
 
   # We can't create a cluster with no node pool defined, but we want to only use
   # separately managed node pools. So we create the smallest possible default
