@@ -36,6 +36,24 @@ resource "google_container_node_pool" "my_node_pool" {
   }
 }
 
+# Deployments with helm
+resource "helm_release" "example" {
+  name       = "k8s-chart"
+  chart      = "k8s-yaml-chart"
+
+  /*
+  set {
+    name  = "image.repository"
+    value = "my-image-repository"
+  }
+
+  set {
+    name  = "image.tag"
+    value = "latest"
+  }
+  */
+}
+
 /*
 # Define the container image for the app
 resource "google_container_image" "my_image" {
