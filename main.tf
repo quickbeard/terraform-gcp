@@ -37,8 +37,8 @@ resource "google_container_node_pool" "my_node_pool" {
 }
 
 # Deployments with helm
-resource "helm_release" "example" {
-  name       = "k8s-chart"
+resource "helm_release" "helm_chart" {
+  name       = "k8s-deployments"
   chart      = "k8s-yaml-chart"
 
   /*
