@@ -26,19 +26,18 @@ resource "google_container_node_pool" "my_node_pool" {
     preemptible = true
     machine_type = var.machine_type
 
-    /*
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
     service_account = google_service_account.default.email
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
-    */
   }
 }
 
 # Deployments with helm
 resource "helm_release" "helm_chart" {
   name = "k8s-deployments"
+  repository = "https://github.com/enduesoftware/k8s-deployments-chart.git"
   chart = "k8s-yaml-chart"
 
   /*
