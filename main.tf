@@ -36,6 +36,7 @@ resource "google_container_node_pool" "my_node_pool" {
   }
 }
 
+/*
 # Define the container image for the app
 resource "google_container_image" "my_image" {
   name = "gcr.io/minh-sandbox/web-app-container"
@@ -50,6 +51,7 @@ resource "google_container_deployment" "my_deployment" {
     # tag = "latest"
   }
 }
+*/
 
 
 /*
