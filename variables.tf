@@ -3,7 +3,7 @@ variable "project" {
 }
 
 variable "zone_east"{
-  default = "us-east1-c"
+  default = "us-east1-b"
 }
 
 variable "region_east" {
