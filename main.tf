@@ -38,17 +38,17 @@ resource "google_container_node_pool" "my_node_pool" {
 
 # Deployments with helm
 resource "helm_release" "helm_chart" {
-  name       = "k8s-deployments"
-  chart      = "k8s-yaml-chart"
+  name = "k8s-deployments"
+  chart = "k8s-yaml-chart"
 
   /*
   set {
-    name  = "image.repository"
+    name = "image.repository"
     value = "my-image-repository"
   }
 
   set {
-    name  = "image.tag"
+    name = "image.tag"
     value = "latest"
   }
   */
