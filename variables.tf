@@ -2,12 +2,12 @@ variable "project" {
   default = "minh-sandbox"
 }
 
-variable "region_east" {
-  default = "us-east4"
+variable "zone_east"{
+  default = "us-east1-c"
 }
 
-variable "region_central" {
-  default = "us-central1"
+variable "region_east" {
+  default = "us-east4"
 }
 
 variable "cluster" {
