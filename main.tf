@@ -24,8 +24,6 @@ module "environments" {
     gke_machine_type = "e2-medium"
 
     # Aptible app
-    app_list = ["website", "website2"]
-    image_list = ["gcr.io/minh-sandbox/main-website", "gcr.io/minh-sandbox/main-website"]
     aptible_env_name = "endue-prod"
     aptible_app_name = "website"
     app_docker_image = "gcr.io/minh-sandbox/main-website"
