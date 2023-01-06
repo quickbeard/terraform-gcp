@@ -1,23 +1,15 @@
-variable "project" {
+variable "github_token" {
+  type = string
+  # Your GitHub personal access token
+  default = "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"
+}
+
+variable "github_org" {
+  type = string
+  default = "enduesoftware"
+}
+
+variable "gcp_project" {
+  type = string
   default = "minh-sandbox"
-}
-
-variable "zone_east"{
-  default = "us-east1-b"
-}
-
-variable "region_east" {
-  default = "us-east4"
-}
-
-variable "cluster" {
-  default = "testing-cluster"
-}
-
-variable "node_pool" {
-  default = "testing-node-pool"
-}
-
-variable "machine_type" {
-  default = "e2-medium"
 }
