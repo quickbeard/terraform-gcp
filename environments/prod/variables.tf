@@ -12,18 +12,6 @@ variable "zone" {
 }
 
 # Secrets
-variable "nextauth_secret_staging" {
-  type = string
-}
-
-variable "fhirserver_password_staging" {
-  type = string
-}
-
-variable "auth0_client_secret_staging" {
-  type = string
-}
-
 variable "nextauth_secret_prod" {
   type = string
 }
