@@ -1,30 +1,28 @@
-# This module runs all terraform files in 'common' folder, including:
-# Create a new GitHub repo
-# Create a new GCP project
-module "common" {
-    source = "./commons"
+module "commons" {
+  source = "./commons"
 
-    # GitHub repo
-    github_repo_name = "source_monorepo"
-    github_repo_description = "Source codes monorepo"
+  github_repo_name        = "monorepo"
+  github_repo_description = "Endue Software Monorepo"
+  org_id                  = "1096701462492"
 }
 
-
-
-# This module runs all terraform files in 'environments' folder, including:
-# Create a GKE cluster with a node pool
-# Create a new Aptible app and endpoint
 module "environments" {
-    source = "./environments"
+  source = "./environments"
 
-    # GKE cluster
-    gke_cluster_name = "endue-staging"
-    gke_zone = "us-central1-c"
-    gke_node_pool_name = "staging-node-pool"
-    gke_machine_type = "e2-medium"
+  org_id = "1096701462492"
+  region = "us-central1"
+  zone   = "us-central1-a"
 
-    # Aptible app
-    aptible_env_name = "endue-prod"
-    aptible_app_name = "website"
-    app_docker_image = "gcr.io/minh-sandbox/main-website"
+  # Secrets (Terraform Cloud variables)
+  nextauth_secret_staging     = var.nextauth_secret_staging
+  fhirserver_password_staging = var.fhirserver_password_staging
+  auth0_client_secret_staging = var.auth0_client_secret_staging
+
+  nextauth_secret_prod     = var.nextauth_secret_prod
+  fhirserver_password_prod = var.fhirserver_password_prod
+  auth0_client_secret_prod = var.auth0_client_secret_prod
+
+  # DataDog API key, this will be use in every env, so we don't need to have suffix
+  dd_api_key = var.dd_api_key
+  dd_app_key = var.dd_app_key
 }

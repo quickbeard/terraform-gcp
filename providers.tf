@@ -14,15 +14,15 @@ terraform {
       source  = "hashicorp/google"
       version = "~> 4.0"
     }
-    
+
     github = {
       source  = "integrations/github"
       version = "~> 5.0"
     }
 
-    aptible = {
-      source = "aptible/aptible"
-      version = "~> 0.1"
+    datadog = {
+      source  = "DataDog/DataDog"
+      version = "~> 3.25"
     }
   }
 }
@@ -33,5 +33,9 @@ provider "github" {
 }
 
 provider "google" {
-  project = var.gcp_project
+
+}
+
+provider "datadog" {
+
 }

@@ -1,27 +1,38 @@
-variable "gke_cluster_name" {
+variable "org_id" {
   type = string
 }
 
-variable "gke_zone" {
+variable "region" {
+  type        = string
+  description = "Default region to create resources in"
+}
+
+variable "zone" {
   type = string
 }
 
-variable "gke_node_pool_name" {
-  type = string
+# Secrets
+variable "nextauth_secret_staging" {
+  type      = string
+  sensitive = true
 }
 
-variable "gke_machine_type" {
-  type = string
+variable "fhirserver_password_staging" {
+  type      = string
+  sensitive = true
 }
 
-variable "aptible_env_name" {
-  type = string
+variable "auth0_client_secret_staging" {
+  type      = string
+  sensitive = true
 }
 
-variable "aptible_app_name" {
-  type = string
+variable "dd_api_key" {
+  type      = string
+  sensitive = true
 }
 
-variable "app_docker_image" {
-  type = string
+variable "dd_app_key" {
+  type      = string
+  sensitive = true
 }
